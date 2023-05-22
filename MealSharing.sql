@@ -44,8 +44,6 @@ VALUES
 
 
 
-
-
 --Checking on the updated table
 USE MealSharing;
 SELECT * FROM meals
