@@ -13,7 +13,7 @@ mealsRouter.get("/", async (request, response) => {
     response.json(meals);
   } catch (error) {
     //throw error;
-    res.status(500).json({
+    response.status(500).json({
       error: 'An error occurred'
     });
   }
