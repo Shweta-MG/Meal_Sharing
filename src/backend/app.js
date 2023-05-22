@@ -108,11 +108,6 @@ app.get('/last-meal', async (req, res) => {
 
 
 
-
-
-
-
-
 app.listen(port, () => console.log('I am listening at port ' + port));
 
 if (process.env.API_PATH) {
