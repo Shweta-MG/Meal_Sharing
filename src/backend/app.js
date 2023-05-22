@@ -28,6 +28,91 @@ app.use(cors());
 // to use routes
 app.use(router);
 
+
+
+//'/future-meals' route 
+app.get('/future-meals', async (req, res) => {  
+  const query = knex.select('id', 'title', 'description', 'price', 'when')
+    .from('meals')
+    .where('when', '>=', new Date());
+
+  try {
+    const results = await query;
+    res.json(results);
+  } catch (err) {
+    throw (err)
+  }
+});
+
+
+// '/past-meals' route
+app.get('/past-meals', async (req, res) => {  
+  const query = knex.select('id', 'title', 'description', 'price', 'when')
+    .from('meals')
+    .where('when', '<', new Date());
+
+  try {
+    const results = await query;
+    res.json(results);
+  } catch (err) {
+    throw (err)
+  }
+});
+
+
+//'/all-meals' route
+app.get('/all-meals', async (req, res) => {  
+  const query = knex.select('id', 'title', 'description', 'price', 'when')
+    .from('meals')
+    .orderBy('id');
+  
+  try {
+    const results = await query;
+    res.json(results);
+  } catch (err) {
+    throw (err)
+  }
+});
+
+
+//'/first-meal'
+app.get('/first-meal', async (req, res) => {
+  const query = knex.select('*').from('meals').orderBy('id', 'asc').limit(1);
+  const results = await query;
+  try {
+    if (results.length === 0) {
+    res.status(404).send(err, 'No meal available')
+  } else {
+    res.json(results);    
+  }}
+  catch (err) {   
+    res.status(500).send(err)
+  }  
+});
+
+
+//'/last-meal'
+app.get('/last-meal', async (req, res) => {
+  const query = knex.select('*').from('meals').orderBy('id', 'desc').limit(1);
+  const results = await query;
+  try {
+    if (results.length === 0) {
+    res.status(404).send(err, 'No meal available')
+  } else {
+    res.json(results);    
+  }}
+  catch (err) {   
+    res.status(500).send(err)
+  }  
+});
+
+
+
+
+
+
+
+
 app.listen(port, () => console.log('I am listening at port ' + port));
 
 if (process.env.API_PATH) {
