@@ -14,7 +14,7 @@ const mealsRouter = require("./api/meals");
 router.use("/meals", mealsRouter);
 
 //'reservations' router
-const reservationsRouter = resuire("./api/reservations");
+const reservationsRouter = require("./api/reservations");
 router.use('/reservations', reservationsRouter);
 
 
