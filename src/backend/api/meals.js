@@ -12,7 +12,10 @@ mealsRouter.get("/", async (request, response) => {
     title,
     dateAfter,
     dateBefore,
-  limit} = request.query;
+    limit,
+    sortKey,
+    sortDir,
+    availableReservations} = request.query;
   let meals;
   
   try {
@@ -47,7 +50,30 @@ mealsRouter.get("/", async (request, response) => {
       //Returns the given number of meals.
     } else if (limit) {
       meals = await knex.select("*")
-        .from('meals').limit(limit);
+        .from('meals')
+        .limit(limit);
+      
+      //Returns all meals sorted by the given key. 
+      //Allows when, max_reservations and price as keys.
+    } else if (sortKey) {
+      if (sortKey === 'when') {
+        meals = await knex.select("*")
+          .from('meals')
+          .orderBy('when', sortDir || 'asc');
+      } else if (sortKey === 'max_reservations') {
+        meals = await knex.select("*")
+        .from('meals')
+        .orderBy('max_reservations', sortDir || 'asc');
+      }  else if (sortKey === 'price') {
+        meals = await knex.select("*")
+        .from('meals')
+        .orderBy('price', sortDir || 'asc');
+      } else {
+        response.send({ msg: 'Invalid sortKey. Please enter valid value' });
+      }     
+    } else if (availableReservations) {
+      response.send({msg: 'To be updated'})
+      
     } else {
       response.status(400).send({Msg: 'Bad Request'
       })
