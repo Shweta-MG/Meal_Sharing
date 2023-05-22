@@ -18,6 +18,11 @@ const reservationsRouter = require("./api/reservations");
 router.use('/reservations', reservationsRouter);
 
 
+//'reservations' router
+const reviewsRouter = require("./api/reviews");
+router.use('/reservations', reviewsRouter);
+
+
 // For week4 no need to look into this!
 // Serve the built client html
 app.use(express.static(buildPath));
