@@ -12,7 +12,7 @@ reservationsRouter.get("/", async (request, response) => {
     response.json(reservations);
   } catch (error) {
     //throw error;
-    res.status(500).json({
+    response.status(500).json({
       error: 'Internal Server Error - An error occurred while fetching data'
     });
   }
@@ -34,7 +34,7 @@ reservationsRouter.get("/:id", async (request, response) => {
       }    
     } catch (error) {
       //throw error;
-      res.status(500).json({
+      response.status(500).json({
         error: 'Internal Server Error - An error occurred while fetching data'
       });
     }
@@ -52,7 +52,7 @@ reservationsRouter.post("/", async (request, response) => {
     } catch (error) {
       //throw error;
       //It can be '400'  when log in specific rights will be considered. 
-      res.status(500).json({
+      response.status(500).json({
         error: 'Internal Server Error - An error occurred while creating data'
       });
       
@@ -76,7 +76,7 @@ reservationsRouter.delete("/:id", async (request, response) => {
     } catch (error) {
       //throw error;
       //It can be '400'  when log in specific rights will be considered. 
-      res.status(500).json({
+      response.status(500).json({
         error: 'An error occurred'
       });
     }
@@ -95,7 +95,7 @@ reservationsRouter.put("/:id", async (request, response) => {
     } catch (error) {
       //throw error;
       //It can be '400'  when log in specific rights will be considered. 
-      res.status(500).json({
+      response.status(500).json({
         error: 'An error occurred'
       });
     }
