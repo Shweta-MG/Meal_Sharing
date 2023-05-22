@@ -12,27 +12,23 @@ mealsRouter.get("/", async (request, response) => {
   
   try {
     if (maxPrice) {
-      if (typeof (maxPrice) == NaN) {
-        response.send({ Msg : 'Please enter valid response'})
-        
+      if (typeof(maxPrice) === NaN) {
+        response.send({ Msg: 'Please enter valid response' });        
       } else {
         meals = await knex.select("*")
-          .from('meals')
-          .where('price', '<' , maxPrice);
+        .from('meals')
+        .where('price', '<' , maxPrice);
       }
     } else {
       response.status(400).send({Msg: 'Bad Request'
       })
-    }
+    } 
     
     const mealList = await meals;
     response.json(mealList);
     
   } catch (error) {
-    //throw error;
-    response.status(500).json({
-      error: 'An error occurred'
-    });
+     throw(error)
   }
 });
 
