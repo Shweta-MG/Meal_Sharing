@@ -7,10 +7,16 @@ const knex = require("../database.js");
 
 // get
 mealsRouter.get("/", async (request, response) => {
-  const { maxPrice } = request.query;
+  const {
+    maxPrice,
+    title,
+    dateAfter,
+    dateBefore,
+  limit} = request.query;
   let meals;
   
   try {
+    //Returns all meals that are cheaper than maxPrice
     if (maxPrice) {
       if (typeof(maxPrice) === NaN) {
         response.send({ Msg: 'Please enter valid response' });        
@@ -19,6 +25,29 @@ mealsRouter.get("/", async (request, response) => {
         .from('meals')
         .where('price', '<' , maxPrice);
       }
+
+      //Returns all meals that partially match the given title
+    } else if (title) {
+      meals = await knex.select("*")
+        .from('meals')
+        .where('title', 'LIKE', `%${title}%`);   
+      
+      //Returns all meals where the date for when is after the given date
+    } else if (dateAfter) {
+      meals = await knex.select("*")
+        .from('meals')
+        .where('when', '>', new Date(dateAfter));  
+
+      //Returns all meals where the date for when is before the given date
+    } else if (dateBefore) {
+      meals = await knex.select("*")
+        .from('meals')
+        .where('when', '>', new Date(dateBefore));  
+      
+      //Returns the given number of meals.
+    } else if (limit) {
+      meals = await knex.select("*")
+        .from('meals').limit(limit);
     } else {
       response.status(400).send({Msg: 'Bad Request'
       })
