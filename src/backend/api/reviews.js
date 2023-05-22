@@ -11,7 +11,7 @@ reviewsRouter.get("/", async (request, response) => {
       response.json(reviews);
     } catch (error) {
       //throw error;
-      res.status(500).json({
+      response.status(500).json({
         error: 'Internal Server Error - An error occurred while fetching data'
       });
     }
@@ -33,7 +33,7 @@ reviewsRouter.get("/:id", async (request, response) => {
       }    
     } catch (error) {
       //throw error;
-      res.status(500).json({
+      response.status(500).json({
         error: 'Internal Server Error - An error occurred while fetching data'
       });
     }
@@ -48,7 +48,7 @@ reviewsRouter.post("/", async (request, response) => {
     } catch (error) {
       //throw error;
       //It can be '400'  when log in specific rights will be considered. 
-      res.status(500).json({
+      response.status(500).json({
         error: 'Internal Server Error - An error occurred while creating data'
       });
       
@@ -72,7 +72,7 @@ reviewsRouter.delete("/:id", async (request, response) => {
     } catch (error) {
       //throw error;
       //It can be '400'  when log in specific rights will be considered. 
-      res.status(500).json({
+      response.status(500).json({
         error: 'An error occurred'
       });
     }
@@ -91,7 +91,7 @@ reviewsRouter.put("/:id", async (request, response) => {
     } catch (error) {
       //throw error;
       //It can be '400'  when log in specific rights will be considered. 
-      res.status(500).json({
+      response.status(500).json({
         error: 'An error occurred'
       });
     }

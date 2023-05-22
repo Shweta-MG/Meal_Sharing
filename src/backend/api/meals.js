@@ -7,13 +7,30 @@ const knex = require("../database.js");
 
 // get
 mealsRouter.get("/", async (request, response) => {
+  const { maxPrice } = request.query;
+  let meals;
   
   try {
-    const meals = await knex.select("*").from('meals');
-    response.json(meals);
+    if (maxPrice) {
+      if (typeof (maxPrice) == NaN) {
+        response.send({ Msg : 'Please enter valid response'})
+        
+      } else {
+        meals = await knex.select("*")
+          .from('meals')
+          .where('price', '<' , maxPrice);
+      }
+    } else {
+      response.status(400).send({Msg: 'Bad Request'
+      })
+    }
+    
+    const mealList = await meals;
+    response.json(mealList);
+    
   } catch (error) {
     //throw error;
-    res.status(500).json({
+    response.status(500).json({
       error: 'An error occurred'
     });
   }
@@ -37,7 +54,7 @@ mealsRouter.get("/:id", async (request, response) => {
     }    
   } catch (error) {
     //throw error;
-    res.status(500).json({
+    response.status(500).json({
       error: 'An error occurred'
     });
   }
@@ -53,7 +70,7 @@ mealsRouter.post("/", async (request, response) => {
   } catch (error) {
     //throw error;
     //It can be '400'  when log in specific rights will be considered. 
-    res.status(500).json({
+    response.status(500).json({
       error: 'An error occurred'
     });
   }
@@ -75,7 +92,7 @@ mealsRouter.delete("/:id", async (request, response) => {
   } catch (error) {
     //throw error;
     //It can be '400'  when log in specific rights will be considered. 
-    res.status(500).json({
+    response.status(500).json({
       error: 'An error occurred'
     });
   }
@@ -104,7 +121,7 @@ mealsRouter.put("/:id", async (request, response) => {
     //throw error;
     //It can be '400' - 'authantication required'  when log in 
     //specific rights will be considered.
-    res.status(500).json({
+    response.status(500).json({
       error: 'An error occurred'
     });
   }

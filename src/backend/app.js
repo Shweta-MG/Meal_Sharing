@@ -20,7 +20,7 @@ router.use('/reservations', reservationsRouter);
 
 //'reservations' router
 const reviewsRouter = require("./api/reviews");
-router.use('/reservations', reviewsRouter);
+router.use('/reviews', reviewsRouter);
 
 
 // For week4 no need to look into this!
