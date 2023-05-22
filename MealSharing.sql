@@ -84,3 +84,32 @@ VALUES
 --Checking on the updated table
 USE MealSharing;
 SELECT * FROM  reservations;
+
+
+--Insert values into review table
+USE MealSharing;
+INSERT INTO reviews (`id`, `title`, `description`, `meals_id`, `stars`, `created_date`) 
+VALUES 
+(1, 'Amazingly good', 'Awesome food and wecoming host', 1, 5, '2022-02-02'),
+(2, 'Super tasty', 'Exactly like on Alex in Berlin', 3, 5, '2021-12-01'),
+(3, 'Nice', 'Liked it!', 2, 4, '2021-12-02'),
+(4, 'Perfect', 'Best sandwich ever', 2, 5, '2021-12-02'),
+(5, 'Perfect', 'Best indian food ever', 2, 5, '2021-11-02'),
+(6, 'Nice', 'Liked it!', 2, 4, '2021-11-02');
+
+--Checking on the updated reservation table
+USE MealSharing;
+SELECT * FROM reviews
+
+
+
+--Drop tables
+USE MealSharing;
+DROP TABLE meals
+
+
+USE MealSharing;
+DROP TABLE reservations
+
+USE MealSharing;
+DROP TABLE reviews
