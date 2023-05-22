@@ -13,6 +13,10 @@ const cors = require("cors");
 const mealsRouter = require("./api/meals");
 router.use("/meals", mealsRouter);
 
+//'reservations' router
+const reservationsRouter = resuire("./api/reservations")
+router.use('/reservations', reservationsRouter)
+
 
 // For week4 no need to look into this!
 // Serve the built client html
