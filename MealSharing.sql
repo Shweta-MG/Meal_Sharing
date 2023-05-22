@@ -50,3 +50,37 @@ VALUES
 USE MealSharing;
 SELECT * FROM meals
 
+
+
+-- Reservation
+USE MealSharing;
+CREATE TABLE `reservations` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+  `number_of_guests` INT(10) NOT NULL, 
+  `meals_id` INT(10) UNSIGNED NOT NULL, 
+  `created_date` DATE NOT NULL, 
+  `contact_phonenumber` VARCHAR(255) NOT NULL, 
+  `contact_name` VARCHAR(255) NOT NULL, 
+  `contact_email` VARCHAR(255) NOT NULL, 
+  CONSTRAINT `fk_meals` FOREIGN KEY (`meals_id`) REFERENCES `meals` (`id`) ON DELETE CASCADE
+);
+
+--Inser values into Reservation table
+USE MealSharing;
+INSERT INTO reservations (
+  `id`, `number_of_guests`, `meals_id`, 
+  `created_date`, `contact_phonenumber`, 
+  `contact_name`, `contact_email`
+) 
+VALUES 
+(1, 2, 5, '2023-03-01', '22334455', 'Shweta', 'Shwetas@gmail.com'),
+(2, 1, 6, '2023-04-04', '52634755', 'Katerine', 'Katerine@gmail.com'),
+(3, 3, 7, '2023-03-02', '51624055', 'Paulimi', 'Paulimi@gmail.com'),
+(4, 1, 7, '2023-01-04', '52634755', 'Katerine', 'Katerine@gmail.com'),
+(5, 3, 9, '2023-05-02', '51624055', 'Paulimi', 'Paulimi@gmail.com')
+
+
+
+--Checking on the updated table
+USE MealSharing;
+SELECT * FROM  reservations;
