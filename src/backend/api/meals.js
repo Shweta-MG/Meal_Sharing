@@ -71,6 +71,8 @@ mealsRouter.get("/", async (request, response) => {
       } else {
         response.send({ msg: 'Invalid sortKey. Please enter valid value' });
       }     
+
+      
     } else if (availableReservations) {
       response.send({msg: 'To be updated'})
       
