@@ -6,7 +6,7 @@ const knex = require('./database.js');
 
 
 const buildPath = path.join(__dirname, "../../dist");
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3005;
 const cors = require("cors");
 
 //'meals' router
