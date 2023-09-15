@@ -12,7 +12,7 @@ reservationsRouter.get("/", async (request, response) => {
     response.json(reservations);
   } catch (error) {
     //throw error;
-    res.status(500).json({
+    response.status(500).json({
       error: 'Internal Server Error - An error occurred while fetching data'
     });
   }
@@ -34,7 +34,7 @@ reservationsRouter.get("/:id", async (request, response) => {
       }    
     } catch (error) {
       //throw error;
-      res.status(500).json({
+      response.status(500).json({
         error: 'Internal Server Error - An error occurred while fetching data'
       });
     }
