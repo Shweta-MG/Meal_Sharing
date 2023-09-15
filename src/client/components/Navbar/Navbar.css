@@ -1,0 +1,28 @@
+.navbar_Container {
+    height: 80px;
+    background-color: black;
+    color: white;   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+
+     
+}
+
+.navbar_logo {
+    color: #fcb900;
+    font-family: cursive;
+    font-size: 25px;
+}
+
+.navbar_list_container ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0px 10px;
+}
+
+.navbar_list_container ul li {
+    padding: 0px 20px;
+}
