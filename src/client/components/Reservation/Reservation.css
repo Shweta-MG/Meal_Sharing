@@ -1,0 +1,47 @@
+.Reservation_Form_Container {
+    width: 950px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+.Reservation_Form_Container label{
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    font-size: 20px;
+    color: black;
+    background-color:rgba(252,185,0,1); 
+    justify-content: center;
+
+}
+
+.Reservation_Form_Container input,
+.Reservation_Form_Container button {
+    width: 120px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    color: rgb(210, 164, 108);
+    border: rgba(252,185,0,1) solid 0.5px;
+}
+
+
+.Reservation_Form_Container input::placeholder{
+    color: rgb(210, 164, 108);
+}
+
+
+.Reservation_Form_Container input{
+    text-align: center;
+    font-size: 12px;
+}
+
+
+.Reservation_Form_Container button {
+    background: rgba(252,185,0,1);
+    color: rgb(0, 0, 0);
+    border: rgba(252,185,0,1) solid 0.5px;
+    font-weight: bold;
+}
+
+
+

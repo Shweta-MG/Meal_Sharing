@@ -2,6 +2,8 @@
 CREATE DATABASE MealSharing;
 
 
+
+
 --use database while creating tables
 USE MealSharing;
 CREATE TABLE `meals` (
@@ -39,7 +41,9 @@ VALUES
 (13, 'Butter Chicken Curry', 'Delicious buttery Indian dish', 'Aarhus', '2023-08-07 09:30:00', 10, 250, '2023-02-01'),
 (14, 'Paneer Butter Masala', 'Paneer cooked in creamy and mildly spiced tomato-based curry topped with lots of butter.', 'Aarhus', '2023-06-17 09:30:00', 10, 150, '2023-07-01'),
 (15, 'Daal Curry', 'Delicious Indian lentil soup served with spiced rice', 'Aarhus', '2023-08-17 09:30:00', 10, 350, '2023-06-01'),
-(16, 'Palak Paneer', 'Juicy chunks of paneer cooked in a creamy gravy of nutritious spinach and rich spices.', 'Aarhus', '2023-07-17 09:30:00', 10, 500, '2023-03-21')
+(16, 'Palak Paneer', 'Juicy chunks of paneer cooked in a creamy gravy of nutritious spinach and rich spices.', 'Aarhus', '2023-07-17 09:30:00', 10, 500, '2023-03-21'),
+(17, 'Malai Kofta', 'Juicy chunks of paneer cooked in a creamy gravy of nutritious spinach and rich spices.', 'Aarhus', '2023-07-17 09:30:00', 10, 500, '2023-03-21'),
+(18, 'Nargishi Kofta', 'Juicy chunks of paneer cooked in a creamy gravy of nutritious spinach and rich spices.', 'Aarhus', '2023-07-17 09:30:00', 10, 500, '2023-03-21')
 
 
 
@@ -84,6 +88,18 @@ VALUES
 --Checking on the updated table
 USE MealSharing;
 SELECT * FROM  reservations;
+
+
+USE MealSharing;
+CREATE TABLE `reviews` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+  `title` VARCHAR(255) NOT NULL, 
+  `description` TEXT NOT NULL, 
+  `meals_id` INT(10) UNSIGNED NOT NULL, 
+  `stars` INT UNSIGNED NOT NULL, 
+  `created_date` DATE NOT NULL, 
+  CONSTRAINT `fk_meal_2` FOREIGN KEY (`meals_id`) REFERENCES `meals` (`id`) ON DELETE CASCADE
+);
 
 
 --Insert values into review table
