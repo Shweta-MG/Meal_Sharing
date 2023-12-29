@@ -1,0 +1,58 @@
+.MealList_container {
+    background-color: black;
+}
+
+.MealList_body {
+    margin: 30px;
+
+}
+.MealList_container h1 {
+    text-align: center;
+    padding: 20px 25px;
+    color: #61CE70;
+    font-size: 40px;
+}
+
+.MealDetail_container {
+    display: inline-block;
+    align-items: center;
+    margin: 20px auto;
+    margin-top: 50px;
+    width: 100%;
+    display: grid;
+    grid-gap: 25px;
+    grid-template: auto / repeat(auto-fit, minmax(300px, 1fr));    
+}
+
+
+.MealCard_container {
+    height: 250px;
+    border: rgb(42, 40, 40) solid 3px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.MealCard_container:hover {
+    border: rgba(252,185,0,1) solid 3px;
+}
+
+.MealCard_container h3{
+    color: white;
+    padding: 10px 10px;    
+    font-size: 30px;
+    line-height: 35px;
+}
+
+
+.MealCard_container p{
+    color: rgb(178, 108, 108);
+    padding: 10px;
+}
+
+.MealCard_container .MealPrice{
+    color: rgb(166, 140, 140);
+}
+
+
+
+

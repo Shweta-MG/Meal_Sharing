@@ -1,0 +1,37 @@
+.About_container{
+    display: flex; 
+    text-align: left;
+    margin: 10px;
+    padding: 20px;
+    height: 450px;
+}
+
+.About_Description {
+    line-height: 30px;
+    justify-content: center;
+}
+
+.About_Description h1{
+    margin-bottom: 30px;
+    margin-top: 80px;
+    color: #6EC1E4;
+    font-size: 50px;
+}
+
+.About_Description h4{
+    margin-bottom: 20px;
+    color: rgb(238,238,238);
+    font-size: 20px;
+}
+
+
+.About_Description p{
+    margin-bottom: 20px;
+    color: rgb(122,220,180);
+    font-size: 15px;
+    line-height: 25px;
+}
+
+.About_image img {
+    height: 450px;
+}
